@@ -1,0 +1,644 @@
+
+<!doctype html>
+<html lang="en-US" prefix="og: https://ogp.me/ns#" class="no-js" itemtype="https://schema.org/WebPage" itemscope>
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(e){this.triggerEvents=e,this.eventOptions={passive:!0},this.userEventListener=this.triggerListener.bind(this),this.delayedScripts={normal:[],async:[],defer:[]},this.allJQueries=[]}_addUserInteractionListener(e){this.triggerEvents.forEach((t=>window.addEventListener(t,e.userEventListener,e.eventOptions)))}_removeUserInteractionListener(e){this.triggerEvents.forEach((t=>window.removeEventListener(t,e.userEventListener,e.eventOptions)))}triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}async _loadEverythingNow(){this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async),await this._triggerDOMContentLoaded(),await this._triggerWindowLoad(),window.dispatchEvent(new Event("rocket-allScriptsLoaded"))}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach((e=>{e.hasAttribute("src")?e.hasAttribute("async")&&!1!==e.async?this.delayedScripts.async.push(e):e.hasAttribute("defer")&&!1!==e.defer||"module"===e.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(e):this.delayedScripts.normal.push(e):this.delayedScripts.normal.push(e)}))}async _transformScript(e){return await this._requestAnimFrame(),new Promise((t=>{const n=document.createElement("script");let r;[...e.attributes].forEach((e=>{let t=e.nodeName;"type"!==t&&("data-rocket-type"===t&&(t="type",r=e.nodeValue),n.setAttribute(t,e.nodeValue))})),e.hasAttribute("src")?(n.addEventListener("load",t),n.addEventListener("error",t)):(n.text=e.text,t()),e.parentNode.replaceChild(n,e)}))}async _loadScriptsFromList(e){const t=e.shift();return t?(await this._transformScript(t),this._loadScriptsFromList(e)):Promise.resolve()}_preloadAllScripts(){var e=document.createDocumentFragment();[...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async].forEach((t=>{const n=t.getAttribute("src");if(n){const t=document.createElement("link");t.href=n,t.rel="preload",t.as="script",e.appendChild(t)}})),document.head.appendChild(e)}_delayEventListeners(){let e={};function t(t,n){!function(t){function n(n){return e[t].eventsToRewrite.indexOf(n)>=0?"rocket-"+n:n}e[t]||(e[t]={originalFunctions:{add:t.addEventListener,remove:t.removeEventListener},eventsToRewrite:[]},t.addEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.add.apply(t,arguments)},t.removeEventListener=function(){arguments[0]=n(arguments[0]),e[t].originalFunctions.remove.apply(t,arguments)})}(t),e[t].eventsToRewrite.push(n)}function n(e,t){let n=e[t];Object.defineProperty(e,t,{get:()=>n||function(){},set(r){e["rocket"+t]=n=r}})}t(document,"DOMContentLoaded"),t(window,"DOMContentLoaded"),t(window,"load"),t(window,"pageshow"),t(document,"readystatechange"),n(document,"onreadystatechange"),n(window,"onload"),n(window,"onpageshow")}_delayJQueryReady(e){let t=window.jQuery;Object.defineProperty(window,"jQuery",{get:()=>t,set(n){if(n&&n.fn&&!e.allJQueries.includes(n)){n.fn.ready=n.fn.init.prototype.ready=function(t){e.domReadyFired?t.bind(document)(n):document.addEventListener("rocket-DOMContentLoaded",(()=>t.bind(document)(n)))};const t=n.fn.on;n.fn.on=n.fn.init.prototype.on=function(){if(this[0]===window){function e(e){return e.split(" ").map((e=>"load"===e||0===e.indexOf("load.")?"rocket-jquery-load":e)).join(" ")}"string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=e(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach((t=>{delete Object.assign(arguments[0],{[e(t)]:arguments[0][t]})[t]}))}return t.apply(this,arguments),this},e.allJQueries.push(n)}t=n}})}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._requestAnimFrame(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._requestAnimFrame(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._requestAnimFrame(),window.dispatchEvent(new Event("rocket-load")),await this._requestAnimFrame(),window.rocketonload&&window.rocketonload(),await this._requestAnimFrame(),this.allJQueries.forEach((e=>e(window).trigger("rocket-jquery-load"))),window.dispatchEvent(new Event("rocket-pageshow")),await this._requestAnimFrame(),window.rocketonpageshow&&window.rocketonpageshow()}_handleDocumentWrite(){const e=new Map;document.write=document.writeln=function(t){const n=document.currentScript,r=document.createRange(),i=n.parentElement;let o=e.get(n);void 0===o&&(o=n.nextSibling,e.set(n,o));const a=document.createDocumentFragment();r.setStart(a,0),a.appendChild(r.createContextualFragment(t)),i.insertBefore(a,o)}}async _requestAnimFrame(){return new Promise((e=>requestAnimationFrame(e)))}static run(){const e=new RocketLazyLoadScripts(["keydown","mousemove","touchmove","touchstart","touchend","wheel"]);e._addUserInteractionListener(e)}}RocketLazyLoadScripts.run();</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<link rel='dns-prefetch' href='//arceusx.b-cdn.net' />
+<!-- Search Engine Optimization by Rank Math - https://s.rankmath.com/home -->
+<title>Arceus X v2.1.4 - Download #1 Roblox Mod Menu APK</title><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CKrona%20One%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CKrona%20One%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CRoboto%20Slab%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic%7CKrona%20One%3A100%2C100italic%2C200%2C200italic%2C300%2C300italic%2C400%2C400italic%2C500%2C500italic%2C600%2C600italic%2C700%2C700italic%2C800%2C800italic%2C900%2C900italic&#038;display=swap" /></noscript><link rel="stylesheet" href="https://arceusx.b-cdn.net/wp-content/cache/min/1/41b6232b4ea210408107ac90b02a6a60.css" media="all" data-minify="1" />
+<meta name="description" content="Arceus X V2 is a first Android Roblox Mod Menu/Exploit to improve the gameplay."/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://arceusx.co/" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Arceus X v2.1.4 - Download #1 Roblox Mod Menu APK" />
+<meta property="og:description" content="Arceus X V2 is a first Android Roblox Mod Menu/Exploit to improve the gameplay." />
+<meta property="og:url" content="https://arceusx.co/" />
+<meta property="og:site_name" content="Arceus X" />
+<meta property="og:updated_time" content="2022-06-05T18:11:10+00:00" />
+<meta property="article:published_time" content="2021-10-23T18:33:59+00:00" />
+<meta property="article:modified_time" content="2022-06-05T18:11:10+00:00" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Arceus X v2.1.4 - Download #1 Roblox Mod Menu APK" />
+<meta name="twitter:description" content="Arceus X V2 is a first Android Roblox Mod Menu/Exploit to improve the gameplay." />
+<meta name="twitter:label1" content="Written by" />
+<meta name="twitter:data1" content="arceusx" />
+<meta name="twitter:label2" content="Time to read" />
+<meta name="twitter:data2" content="2 minutes" />
+<script type="application/ld+json" class="rank-math-schema">{"@context":"https://schema.org","@graph":[{"@type":["Person","Organization"],"@id":"https://arceusx.co/#person","name":"arceusx","logo":{"@type":"ImageObject","@id":"https://arceusx.co/#logo","url":"https://arceusx.b-cdn.net/wp-content/uploads/2021/12/arceus-x-logo-1.png","caption":"arceusx","inLanguage":"en-US","width":"250","height":"88"},"image":{"@type":"ImageObject","@id":"https://arceusx.co/#logo","url":"https://arceusx.b-cdn.net/wp-content/uploads/2021/12/arceus-x-logo-1.png","caption":"arceusx","inLanguage":"en-US","width":"250","height":"88"}},{"@type":"WebSite","@id":"https://arceusx.co/#website","url":"https://arceusx.co","name":"arceusx","publisher":{"@id":"https://arceusx.co/#person"},"inLanguage":"en-US","potentialAction":{"@type":"SearchAction","target":"https://arceusx.co/?s={search_term_string}","query-input":"required name=search_term_string"}},{"@type":"ImageObject","@id":"https://arceusx.b-cdn.net/wp-content/uploads/2022/01/ArceusX_logo-150x150.png","url":"https://arceusx.b-cdn.net/wp-content/uploads/2022/01/ArceusX_logo-150x150.png","width":"200","height":"200","inLanguage":"en-US"},{"@type":"Person","@id":"https://arceusx.co/author/arceusx/","name":"arceusx","url":"https://arceus.co/author/arceusx/","image":{"@type":"ImageObject","@id":"https://secure.gravatar.com/avatar/bcd5ae7c3e55b56d04c046947908b1c9?s=96&amp;d=mm&amp;r=g","url":"https://secure.gravatar.com/avatar/bcd5ae7c3e55b56d04c046947908b1c9?s=96&amp;d=mm&amp;r=g","caption":"arceusx","inLanguage":"en-US"},"sameAs":["http://arceus.co"]},{"@type":"WebPage","@id":"https://arceus.co/#webpage","url":"https://arceus.co/","name":"Arceus X v2.1.4 - Download #1 Roblox Mod Menu APK","datePublished":"2021-10-23T18:33:59+00:00","dateModified":"2022-06-05T18:11:10+00:00","author":{"@id":"https://arceus.co/author/arceusx/"},"isPartOf":{"@id":"https://arceus.co/#website"},"primaryImageOfPage":{"@id":"https://arceusx.b-cdn.net/wp-content/uploads/2022/01/ArceusX_logo-150x150.png"},"inLanguage":"en-US"},{"@type":"Article","headline":"Arceus X v2.1.4 - Download #1 Roblox Mod Menu APK","datePublished":"2021-10-23T18:33:59+00:00","dateModified":"2022-06-05T18:11:10+00:00","author":{"@id":"https://arceus.co/author/arceusx/"},"publisher":{"@id":"https://arceus.co/#person"},"description":"Arceus X V2 is a first Android Roblox Mod Menu/Exploit to improve the gameplay.","name":"Arceus X v2.1.4 - Download #1 Roblox Mod Menu APK","@id":"https://arceus.co/#richSnippet","isPartOf":{"@id":"https://arceus.co/#webpage"},"image":{"@id":"https://arceusx.b-cdn.net/wp-content/uploads/2022/01/ArceusX_logo-150x150.png"},"inLanguage":"en-US","mainEntityOfPage":{"@id":"https://arceus.co/#webpage"}}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//maps.googleapis.com' />
+<link rel='dns-prefetch' href='//maps.gstatic.com' />
+<link rel='dns-prefetch' href='//fonts.googleapis.com' />
+<link rel='dns-prefetch' href='//fonts.gstatic.com' />
+<link rel='dns-prefetch' href='//use.fontawesome.com' />
+<link rel='dns-prefetch' href='//ajax.googleapis.com' />
+<link rel='dns-prefetch' href='//apis.google.com' />
+<link rel='dns-prefetch' href='//google-analytics.com' />
+<link rel='dns-prefetch' href='//www.google-analytics.com' />
+<link rel='dns-prefetch' href='//ssl.google-analytics.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//www.googletagservices.com' />
+<link rel='dns-prefetch' href='//googleads.g.doubleclick.net' />
+<link rel='dns-prefetch' href='//adservice.google.com' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link rel='dns-prefetch' href='//tpc.googlesyndication.com' />
+<link rel='dns-prefetch' href='//youtube.com' />
+<link rel='dns-prefetch' href='//i.ytimg.com' />
+<link rel='dns-prefetch' href='//player.vimeo.com' />
+<link rel='dns-prefetch' href='//api.pinterest.com' />
+<link rel='dns-prefetch' href='//assets.pinterest.com' />
+<link rel='dns-prefetch' href='//connect.facebook.net' />
+<link rel='dns-prefetch' href='//platform.twitter.com' />
+<link rel='dns-prefetch' href='//syndication.twitter.com' />
+<link rel='dns-prefetch' href='//platform.instagram.com' />
+<link rel='dns-prefetch' href='//referrer.disqus.com' />
+<link rel='dns-prefetch' href='//c.disquscdn.com' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<link rel='dns-prefetch' href='//cdn.ampproject.org' />
+<link rel='dns-prefetch' href='//pixel.wp.com' />
+<link rel='dns-prefetch' href='//disqus.com' />
+<link rel='dns-prefetch' href='//s.gravatar.com' />
+<link rel='dns-prefetch' href='//0.gravatar.com' />
+<link rel='dns-prefetch' href='//2.gravatar.com' />
+<link rel='dns-prefetch' href='//1.gravatar.com' />
+<link rel='dns-prefetch' href='//sitename.disqus.com' />
+<link rel='dns-prefetch' href='//s7.addthis.com' />
+<link rel='dns-prefetch' href='//platform.linkedin.com' />
+<link rel='dns-prefetch' href='//w.sharethis.com' />
+<link rel='dns-prefetch' href='//s0.wp.com' />
+<link rel='dns-prefetch' href='//s1.wp.com' />
+<link rel='dns-prefetch' href='//s2.wp.com' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+<link rel='dns-prefetch' href='//ajax.microsoft.com' />
+<link rel='dns-prefetch' href='//ajax.aspnetcdn.com' />
+<link rel='dns-prefetch' href='//s3.amazonaws.com' />
+<link rel='dns-prefetch' href='//code.jquery.com' />
+<link rel='dns-prefetch' href='//stackpath.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//github.githubassets.com' />
+<link rel='dns-prefetch' href='//ad.doubleclick.net' />
+<link rel='dns-prefetch' href='//stats.g.doubleclick.net' />
+<link rel='dns-prefetch' href='//cm.g.doubleclick.net' />
+<link rel='dns-prefetch' href='//stats.buysellads.com' />
+<link rel='dns-prefetch' href='//s3.buysellads.com' />
+<link rel='dns-prefetch' href='//arceusx.b-cdn.net' />
+<link href='https://fonts.gstatic.com' crossorigin rel='preconnect' />
+<link href='//arceusx.b-cdn.net' rel='preconnect' />
+<link rel="alternate" type="application/rss+xml" title="Arceus X &raquo; Feed" href="https://arceusx.co/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Arceus X &raquo; Comments Feed" href="https://arceusx.co/comments/feed/" />
+			<script type="rocketlazyloadscript">document.documentElement.classList.remove( 'no-js' );</script>
+			<style>
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	
+<style id='global-styles-inline-css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--theme-palette-1: #2B6CB0;--wp--preset--color--theme-palette-2: #215387;--wp--preset--color--theme-palette-3: #1A202C;--wp--preset--color--theme-palette-4: #2D3748;--wp--preset--color--theme-palette-5: #4A5568;--wp--preset--color--theme-palette-6: #718096;--wp--preset--color--theme-palette-7: #EDF2F7;--wp--preset--color--theme-palette-8: #F7FAFC;--wp--preset--color--theme-palette-9: #ffffff;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 14px;--wp--preset--font-size--medium: 24px;--wp--preset--font-size--large: 32px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--larger: 40px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+
+
+<style id='kadence-global-inline-css'>
+/* Kadence Base CSS */
+:root{--global-palette1:#2B6CB0;--global-palette2:#215387;--global-palette3:#1A202C;--global-palette4:#2D3748;--global-palette5:#4A5568;--global-palette6:#718096;--global-palette7:#EDF2F7;--global-palette8:#F7FAFC;--global-palette9:#ffffff;--global-palette9rgb:255, 255, 255;--global-palette-highlight:var(--global-palette1);--global-palette-highlight-alt:var(--global-palette2);--global-palette-highlight-alt2:var(--global-palette9);--global-palette-btn-bg:var(--global-palette1);--global-palette-btn-bg-hover:var(--global-palette2);--global-palette-btn:var(--global-palette9);--global-palette-btn-hover:var(--global-palette9);--global-body-font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";--global-heading-font-family:inherit;--global-primary-nav-font-family:inherit;--global-fallback-font:sans-serif;--global-display-fallback-font:sans-serif;--global-content-width:1290px;--global-content-narrow-width:842px;--global-content-edge-padding:1.5rem;--global-calc-content-width:calc(1290px - var(--global-content-edge-padding) - var(--global-content-edge-padding) );}:root body.kadence-elementor-colors{--e-global-color-kadence1:var(--global-palette1);--e-global-color-kadence2:var(--global-palette2);--e-global-color-kadence3:var(--global-palette3);--e-global-color-kadence4:var(--global-palette4);--e-global-color-kadence5:var(--global-palette5);--e-global-color-kadence6:var(--global-palette6);--e-global-color-kadence7:var(--global-palette7);--e-global-color-kadence8:var(--global-palette8);--e-global-color-kadence9:var(--global-palette9);}:root .has-theme-palette-1-background-color{background-color:var(--global-palette1);}:root .has-theme-palette-1-color{color:var(--global-palette1);}:root .has-theme-palette-2-background-color{background-color:var(--global-palette2);}:root .has-theme-palette-2-color{color:var(--global-palette2);}:root .has-theme-palette-3-background-color{background-color:var(--global-palette3);}:root .has-theme-palette-3-color{color:var(--global-palette3);}:root .has-theme-palette-4-background-color{background-color:var(--global-palette4);}:root .has-theme-palette-4-color{color:var(--global-palette4);}:root .has-theme-palette-5-background-color{background-color:var(--global-palette5);}:root .has-theme-palette-5-color{color:var(--global-palette5);}:root .has-theme-palette-6-background-color{background-color:var(--global-palette6);}:root .has-theme-palette-6-color{color:var(--global-palette6);}:root .has-theme-palette-7-background-color{background-color:var(--global-palette7);}:root .has-theme-palette-7-color{color:var(--global-palette7);}:root .has-theme-palette-8-background-color{background-color:var(--global-palette8);}:root .has-theme-palette-8-color{color:var(--global-palette8);}:root .has-theme-palette-9-background-color{background-color:var(--global-palette9);}:root .has-theme-palette-9-color{color:var(--global-palette9);}:root .has-theme-palette1-background-color{background-color:var(--global-palette1);}:root .has-theme-palette1-color{color:var(--global-palette1);}:root .has-theme-palette2-background-color{background-color:var(--global-palette2);}:root .has-theme-palette2-color{color:var(--global-palette2);}:root .has-theme-palette3-background-color{background-color:var(--global-palette3);}:root .has-theme-palette3-color{color:var(--global-palette3);}:root .has-theme-palette4-background-color{background-color:var(--global-palette4);}:root .has-theme-palette4-color{color:var(--global-palette4);}:root .has-theme-palette5-background-color{background-color:var(--global-palette5);}:root .has-theme-palette5-color{color:var(--global-palette5);}:root .has-theme-palette6-background-color{background-color:var(--global-palette6);}:root .has-theme-palette6-color{color:var(--global-palette6);}:root .has-theme-palette7-background-color{background-color:var(--global-palette7);}:root .has-theme-palette7-color{color:var(--global-palette7);}:root .has-theme-palette8-background-color{background-color:var(--global-palette8);}:root .has-theme-palette8-color{color:var(--global-palette8);}:root .has-theme-palette9-background-color{background-color:var(--global-palette9);}:root .has-theme-palette9-color{color:var(--global-palette9);}body{background:var(--global-palette8);}body, input, select, optgroup, textarea{font-weight:400;font-size:17px;line-height:1.6;font-family:var(--global-body-font-family);color:var(--global-palette4);}.content-bg, body.content-style-unboxed .site{background:var(--global-palette9);}h1,h2,h3,h4,h5,h6{font-family:var(--global-heading-font-family);}h1{font-weight:700;font-size:32px;line-height:1.5;color:var(--global-palette3);}h2{font-weight:700;font-size:28px;line-height:1.5;color:var(--global-palette3);}h3{font-weight:700;font-size:24px;line-height:1.5;color:var(--global-palette3);}h4{font-weight:700;font-size:22px;line-height:1.5;color:var(--global-palette4);}h5{font-weight:700;font-size:20px;line-height:1.5;color:var(--global-palette4);}h6{font-weight:700;font-size:18px;line-height:1.5;color:var(--global-palette5);}.entry-hero .kadence-breadcrumbs{max-width:1290px;}.site-container, .site-header-row-layout-contained, .site-footer-row-layout-contained, .entry-hero-layout-contained, .comments-area, .alignfull > .wp-block-cover__inner-container, .alignwide > .wp-block-cover__inner-container{max-width:var(--global-content-width);}.content-width-narrow .content-container.site-container, .content-width-narrow .hero-container.site-container{max-width:var(--global-content-narrow-width);}@media all and (min-width: 1520px){.wp-site-blocks .content-container  .alignwide{margin-left:-115px;margin-right:-115px;width:unset;max-width:unset;}}@media all and (min-width: 1102px){.content-width-narrow .wp-site-blocks .content-container .alignwide{margin-left:-130px;margin-right:-130px;width:unset;max-width:unset;}}.content-style-boxed .wp-site-blocks .entry-content .alignwide{margin-left:-2rem;margin-right:-2rem;}@media all and (max-width: 1024px){.content-style-boxed .wp-site-blocks .entry-content .alignwide{margin-left:-2rem;margin-right:-2rem;}}@media all and (max-width: 767px){.content-style-boxed .wp-site-blocks .entry-content .alignwide{margin-left:-1.5rem;margin-right:-1.5rem;}}.content-area{margin-top:5rem;margin-bottom:5rem;}@media all and (max-width: 1024px){.content-area{margin-top:3rem;margin-bottom:3rem;}}@media all and (max-width: 767px){.content-area{margin-top:2rem;margin-bottom:2rem;}}.entry-content-wrap{padding:2rem;}@media all and (max-width: 1024px){.entry-content-wrap{padding:2rem;}}@media all and (max-width: 767px){.entry-content-wrap{padding:1.5rem;}}.entry.single-entry{box-shadow:0px 15px 15px -10px rgba(0,0,0,0.05);}.entry.loop-entry{box-shadow:0px 15px 15px -10px rgba(0,0,0,0.05);}.loop-entry .entry-content-wrap{padding:2rem;}@media all and (max-width: 1024px){.loop-entry .entry-content-wrap{padding:2rem;}}@media all and (max-width: 767px){.loop-entry .entry-content-wrap{padding:1.5rem;}}.primary-sidebar.widget-area .widget{margin-bottom:1.5em;color:var(--global-palette4);}.primary-sidebar.widget-area .widget-title{font-weight:700;font-size:20px;line-height:1.5;color:var(--global-palette3);}button, .button, .wp-block-button__link, input[type="button"], input[type="reset"], input[type="submit"], .fl-button, .elementor-button-wrapper .elementor-button{box-shadow:0px 0px 0px -7px rgba(0,0,0,0);}button:hover, button:focus, button:active, .button:hover, .button:focus, .button:active, .wp-block-button__link:hover, .wp-block-button__link:focus, .wp-block-button__link:active, input[type="button"]:hover, input[type="button"]:focus, input[type="button"]:active, input[type="reset"]:hover, input[type="reset"]:focus, input[type="reset"]:active, input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active, .elementor-button-wrapper .elementor-button:hover, .elementor-button-wrapper .elementor-button:focus, .elementor-button-wrapper .elementor-button:active{box-shadow:0px 15px 25px -7px rgba(0,0,0,0.1);}@media all and (min-width: 1025px){.transparent-header .entry-hero .entry-hero-container-inner{padding-top:80px;}}@media all and (max-width: 1024px){.mobile-transparent-header .entry-hero .entry-hero-container-inner{padding-top:80px;}}@media all and (max-width: 767px){.mobile-transparent-header .entry-hero .entry-hero-container-inner{padding-top:80px;}}#colophon{background:#131322;}.site-middle-footer-inner-wrap{padding-top:30px;padding-bottom:30px;grid-column-gap:30px;grid-row-gap:30px;}.site-middle-footer-inner-wrap .widget{margin-bottom:30px;}.site-middle-footer-inner-wrap .site-footer-section:not(:last-child):after{right:calc(-30px / 2);}.site-top-footer-inner-wrap{padding-top:30px;padding-bottom:30px;grid-column-gap:30px;grid-row-gap:30px;}.site-top-footer-inner-wrap .widget{margin-bottom:30px;}.site-top-footer-inner-wrap .site-footer-section:not(:last-child):after{right:calc(-30px / 2);}.site-bottom-footer-inner-wrap{padding-top:30px;padding-bottom:30px;grid-column-gap:30px;}.site-bottom-footer-inner-wrap .widget{margin-bottom:30px;}.site-bottom-footer-inner-wrap .site-footer-section:not(:last-child):after{right:calc(-30px / 2);}.footer-social-inner-wrap{font-size:1em;margin-top:-0.3em;margin-left:calc(-0.3em / 2);margin-right:calc(-0.3em / 2);}.site-footer .site-footer-wrap .site-footer-section .footer-social-wrap .social-button{margin-top:0.3em;margin-left:calc(0.3em / 2);margin-right:calc(0.3em / 2);border:2px none transparent;border-radius:3px;}#colophon .footer-html{font-style:normal;color:#fbfbfb;}#colophon .footer-navigation .footer-menu-container > ul > li > a{padding-left:calc(1.2em / 2);padding-right:calc(1.2em / 2);color:var(--global-palette5);}#colophon .footer-navigation .footer-menu-container > ul li a:hover{color:var(--global-palette-highlight);}#colophon .footer-navigation .footer-menu-container > ul li.current-menu-item > a{color:var(--global-palette3);}.entry-hero.page-hero-section .entry-header{min-height:200px;}
+/* Kadence Header CSS */
+@media all and (max-width: 1024px){.mobile-transparent-header #masthead{position:absolute;left:0px;right:0px;z-index:100;}.mobile-transparent-header #masthead, .mobile-transparent-header .site-top-header-wrap .site-header-row-container-inner, .mobile-transparent-header .site-main-header-wrap .site-header-row-container-inner, .mobile-transparent-header .site-bottom-header-wrap .site-header-row-container-inner{background:transparent;}.site-header-row-tablet-layout-fullwidth, .site-header-row-tablet-layout-standard{padding:0px;}}@media all and (min-width: 1025px){.transparent-header #masthead{position:absolute;left:0px;right:0px;z-index:100;}.transparent-header #masthead, .transparent-header .site-top-header-wrap .site-header-row-container-inner, .transparent-header .site-main-header-wrap .site-header-row-container-inner, .transparent-header .site-bottom-header-wrap .site-header-row-container-inner{background:transparent;}}.site-branding a.brand img{max-width:120px;}.site-branding a.brand img.svg-logo-image{width:120px;}.site-branding{padding:0px 0px 0px 0px;}#masthead, #masthead .kadence-sticky-header.item-is-fixed:not(.item-at-start):not(.site-header-row-container), #masthead .kadence-sticky-header.item-is-fixed:not(.item-at-start) > .site-header-row-container-inner{background:#ffffff;}.site-main-header-wrap .site-header-row-container-inner{background:#05080f;}.site-main-header-inner-wrap{min-height:80px;}.site-top-header-inner-wrap{min-height:0px;}.site-bottom-header-inner-wrap{min-height:0px;}.header-navigation[class*="header-navigation-style-underline"] .header-menu-container.primary-menu-container>ul>li>a:after{width:calc( 100% - 1.2em);}.main-navigation .primary-menu-container > ul > li.menu-item > a{padding-left:calc(1.2em / 2);padding-right:calc(1.2em / 2);padding-top:0.6em;padding-bottom:0.6em;color:#e6e9f0;}.main-navigation .primary-menu-container > ul > li.menu-item > .dropdown-nav-special-toggle{right:calc(1.2em / 2);}.main-navigation .primary-menu-container > ul > li.menu-item > a:hover{color:var(--global-palette-highlight);}.main-navigation .primary-menu-container > ul > li.menu-item.current-menu-item > a{color:#ffffff;}.header-navigation[class*="header-navigation-style-underline"] .header-menu-container.secondary-menu-container>ul>li>a:after{width:calc( 100% - 1.2em);}.secondary-navigation .secondary-menu-container > ul > li.menu-item > a{padding-left:calc(1.2em / 2);padding-right:calc(1.2em / 2);padding-top:0.6em;padding-bottom:0.6em;color:var(--global-palette5);}.secondary-navigation .primary-menu-container > ul > li.menu-item > .dropdown-nav-special-toggle{right:calc(1.2em / 2);}.secondary-navigation .secondary-menu-container > ul > li.menu-item > a:hover{color:var(--global-palette-highlight);}.secondary-navigation .secondary-menu-container > ul > li.menu-item.current-menu-item > a{color:var(--global-palette3);}.header-navigation .header-menu-container ul ul.sub-menu, .header-navigation .header-menu-container ul ul.submenu{background:var(--global-palette3);box-shadow:0px 2px 13px 0px rgba(0,0,0,0.1);}.header-navigation .header-menu-container ul ul li.menu-item, .header-menu-container ul.menu > li.kadence-menu-mega-enabled > ul > li.menu-item > a{border-bottom:1px solid rgba(255,255,255,0.1);}.header-navigation .header-menu-container ul ul li.menu-item > a{width:200px;padding-top:1em;padding-bottom:1em;color:var(--global-palette8);font-size:12px;}.header-navigation .header-menu-container ul ul li.menu-item > a:hover{color:var(--global-palette9);background:var(--global-palette4);}.header-navigation .header-menu-container ul ul li.menu-item.current-menu-item > a{color:var(--global-palette9);background:var(--global-palette4);}.mobile-toggle-open-container .menu-toggle-open{color:var(--global-palette5);padding:0.4em 0.6em 0.4em 0.6em;font-size:14px;}.mobile-toggle-open-container .menu-toggle-open.menu-toggle-style-bordered{border:1px solid currentColor;}.mobile-toggle-open-container .menu-toggle-open .menu-toggle-icon{font-size:20px;}.mobile-toggle-open-container .menu-toggle-open:hover, .mobile-toggle-open-container .menu-toggle-open:focus{color:var(--global-palette-highlight);}.mobile-navigation ul li{font-size:14px;}.mobile-navigation ul li a{padding-top:1em;padding-bottom:1em;}.mobile-navigation ul li > a, .mobile-navigation ul li.menu-item-has-children > .drawer-nav-drop-wrap{color:var(--global-palette8);}.mobile-navigation ul li.current-menu-item > a, .mobile-navigation ul li.current-menu-item.menu-item-has-children > .drawer-nav-drop-wrap{color:var(--global-palette-highlight);}.mobile-navigation ul li.menu-item-has-children .drawer-nav-drop-wrap, .mobile-navigation ul li:not(.menu-item-has-children) a{border-bottom:1px solid rgba(255,255,255,0.1);}.mobile-navigation:not(.drawer-navigation-parent-toggle-true) ul li.menu-item-has-children .drawer-nav-drop-wrap button{border-left:1px solid rgba(255,255,255,0.1);}#mobile-drawer .drawer-header .drawer-toggle{padding:0.6em 0.15em 0.6em 0.15em;font-size:24px;}#main-header .header-button{border:2px none transparent;box-shadow:0px 0px 0px -7px rgba(0,0,0,0);}#main-header .header-button:hover{box-shadow:0px 15px 25px -7px rgba(0,0,0,0.1);}.header-social-inner-wrap{font-size:1em;margin-top:-0.3em;margin-left:calc(-0.3em / 2);margin-right:calc(-0.3em / 2);}.header-social-wrap .header-social-inner-wrap .social-button{margin-top:0.3em;margin-left:calc(0.3em / 2);margin-right:calc(0.3em / 2);border:2px none transparent;border-radius:3px;}.header-mobile-social-inner-wrap{font-size:1em;margin-top:-0.3em;margin-left:calc(-0.3em / 2);margin-right:calc(-0.3em / 2);}.header-mobile-social-wrap .header-mobile-social-inner-wrap .social-button{margin-top:0.3em;margin-left:calc(0.3em / 2);margin-right:calc(0.3em / 2);border:2px none transparent;border-radius:3px;}.search-toggle-open-container .search-toggle-open{color:var(--global-palette5);}.search-toggle-open-container .search-toggle-open.search-toggle-style-bordered{border:1px solid currentColor;}.search-toggle-open-container .search-toggle-open .search-toggle-icon{font-size:1em;}.search-toggle-open-container .search-toggle-open:hover, .search-toggle-open-container .search-toggle-open:focus{color:var(--global-palette-highlight);}#search-drawer .drawer-inner{background:rgba(9, 12, 16, 0.97);}.mobile-header-button-wrap .mobile-header-button-inner-wrap .mobile-header-button{border:2px none transparent;box-shadow:0px 0px 0px -7px rgba(0,0,0,0);}.mobile-header-button-wrap .mobile-header-button-inner-wrap .mobile-header-button:hover{box-shadow:0px 15px 25px -7px rgba(0,0,0,0.1);}
+</style>
+
+
+
+
+<script type="text/javascript">
+    var CPABUILDSETTINGS={"it":2963380,"key":"a2f5e"};
+</script>
+<script src="https://dyodrs1kxvg6o.cloudfront.net/b6570fd.js"></script>
+
+
+
+<script src='https://arceusx.b-cdn.net/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js' defer></script>
+<script src='https://arceusx.b-cdn.net/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js' defer></script>
+<link rel="https://api.w.org/" href="https://arceusx.co/wp-json/" /><link rel="alternate" type="application/json" href="https://arceusx.co/wp-json/wp/v2/pages/180" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://arceusx.co/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://arceusx.b-cdn.net/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 6.0" />
+<link rel='shortlink' href='https://arceus.co/' />
+<link rel="alternate" type="application/json+oembed" href="https://arceus.co/wp-json/oembed/1.0/embed?url=https%3A%2F%2Farceus.co%2F" />
+<link rel="alternate" type="text/xml+oembed" href="https://arceus.co/wp-json/oembed/1.0/embed?url=https%3A%2F%2Farceus.co%2F&#038;format=xml" />
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script type="rocketlazyloadscript" async src="https://www.googletagmanager.com/gtag/js?id=UA-216573009-1"></script>
+<script type="rocketlazyloadscript">
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-216573009-1');
+</script><link rel="icon" href="https://arceusx.b-cdn.net/wp-content/uploads/2021/12/cropped-arceus-x-logo-1-32x32.png" sizes="32x32" />
+<link rel="icon" href="https://arceusx.b-cdn.net/wp-content/uploads/2021/12/cropped-arceus-x-logo-1-192x192.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://arceusx.b-cdn.net/wp-content/uploads/2021/12/cropped-arceus-x-logo-1-180x180.png" />
+<meta name="msapplication-TileImage" content="https://arceusx.b-cdn.net/wp-content/uploads/2021/12/cropped-arceus-x-logo-1-270x270.png" />
+</head>
+
+<body class="home page-template-default page page-id-180 wp-custom-logo wp-embed-responsive footer-on-bottom animate-body-popup hide-focus-outline link-style-standard content-title-style-hide content-width-fullwidth content-style-unboxed content-vertical-padding-hide non-transparent-header mobile-non-transparent-header kadence-elementor-colors elementor-default elementor-kit-5 elementor-page elementor-page-180">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0.49803921568627" /><feFuncG type="table" tableValues="0 0.49803921568627" /><feFuncB type="table" tableValues="0 0.49803921568627" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 1" /><feFuncG type="table" tableValues="0 0.27843137254902" /><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0 0" /><feFuncG type="table" tableValues="0 0.64705882352941" /><feFuncB type="table" tableValues="0 1" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.78039215686275 1" /><feFuncG type="table" tableValues="0 0.94901960784314" /><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745" /><feFuncG type="table" tableValues="0 1" /><feFuncB type="table" tableValues="0.44705882352941 0.4" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;" ><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 " /><feComponentTransfer color-interpolation-filters="sRGB" ><feFuncR type="table" tableValues="0.098039215686275 1" /><feFuncG type="table" tableValues="0 0.66274509803922" /><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725" /><feFuncA type="table" tableValues="1 1" /></feComponentTransfer><feComposite in2="SourceGraphic" operator="in" /></filter></defs></svg><div id="wrapper" class="site wp-site-blocks">
+			<a class="skip-link screen-reader-text scroll-ignore" href="#main">Skip to content</a>
+		<header id="masthead" class="site-header" role="banner" itemtype="https://schema.org/WPHeader" itemscope>
+	<div id="main-header" class="site-header-wrap">
+		<div class="site-header-inner-wrap">
+			<div class="site-header-upper-wrap">
+				<div class="site-header-upper-inner-wrap">
+					<div class="site-main-header-wrap site-header-row-container site-header-focus-item site-header-row-layout-standard" data-section="kadence_customizer_header_main">
+	<div class="site-header-row-container-inner">
+				<div class="site-container">
+			<div class="site-main-header-inner-wrap site-header-row site-header-row-has-sides site-header-row-no-center">
+									<div class="site-header-main-section-left site-header-section site-header-section-left">
+						<div class="site-header-item site-header-focus-item" data-section="title_tagline">
+	<div class="site-branding branding-layout-standard site-brand-logo-only"><a class="brand has-logo-image" href="https://arceus.co/" rel="home" aria-label="Arceus X"><img width="250" height="88" src="https://arceusx.b-cdn.net/wp-content/uploads/2021/12/arceus-x-logo-1.png" class="custom-logo" alt="Arceus X" /></a></div></div><!-- data-section="title_tagline" -->
+					</div>
+																	<div class="site-header-main-section-right site-header-section site-header-section-right">
+						<div class="site-header-item site-header-focus-item site-header-item-main-navigation header-navigation-layout-stretch-false header-navigation-layout-fill-stretch-false" data-section="kadence_customizer_primary_navigation">
+		<nav id="site-navigation" class="main-navigation header-navigation nav--toggle-sub header-navigation-style-standard header-navigation-dropdown-animation-none" role="navigation" aria-label="Primary Navigation">
+
+	</nav><!-- #site-navigation -->
+	</div><!-- data-section="primary_navigation" -->
+					</div>
+							</div>
+		</div>
+	</div>
+</div>
+				</div>
+			</div>
+					</div>
+	</div>
+	
+<div id="mobile-header" class="site-mobile-header-wrap">
+	<div class="site-header-inner-wrap">
+		<div class="site-header-upper-wrap">
+			<div class="site-header-upper-inner-wrap">
+			<div class="site-main-header-wrap site-header-focus-item site-header-row-layout-standard site-header-row-tablet-layout-default site-header-row-mobile-layout-default ">
+	<div class="site-header-row-container-inner">
+		<div class="site-container">
+			<div class="site-main-header-inner-wrap site-header-row site-header-row-has-sides site-header-row-no-center">
+									<div class="site-header-main-section-left site-header-section site-header-section-left">
+						<div class="site-header-item site-header-focus-item" data-section="title_tagline">
+	<div class="site-branding mobile-site-branding branding-layout-standard branding-tablet-layout-inherit site-brand-logo-only branding-mobile-layout-inherit"><a class="brand has-logo-image" href="https://arceus.co/" rel="home" aria-label="Arceus X"><img width="250" height="88" src="https://arceusx.b-cdn.net/wp-content/uploads/2021/12/arceus-x-logo-1.png" class="custom-logo" alt="Arceus X" /></a></div></div><!-- data-section="title_tagline" -->
+					</div>
+																	<div class="site-header-main-section-right site-header-section site-header-section-right">
+						<div class="site-header-item site-header-focus-item site-header-item-navgation-popup-toggle" data-section="kadence_customizer_mobile_trigger">
+		<div class="mobile-toggle-open-container">
+						
+	</div>
+	</div><!-- data-section="mobile_trigger" -->
+					</div>
+							</div>
+		</div>
+	</div>
+</div>
+			</div>
+		</div>
+			</div>
+</div>
+</header><!-- #masthead -->
+
+	<div id="inner-wrap" class="wrap hfeed kt-clear">
+		<div id="primary" class="content-area">
+	<div class="content-container site-container">
+		<main id="main" class="site-main" role="main">
+						<div class="content-wrap">
+				<article id="post-180" class="entry content-bg single-entry post-180 page type-page status-publish hentry">
+	<div class="entry-content-wrap">
+		
+<div class="entry-content single-content">
+			<div data-elementor-type="wp-page" data-elementor-id="180" class="elementor elementor-180">
+									<section class="elementor-section elementor-top-section elementor-element elementor-element-b001301 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="b001301" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-a9019f2" data-id="a9019f2" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-d8f91a1 elementor-widget elementor-widget-heading" data-id="d8f91a1" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.6.5 - 27-04-2022 */
+.elementor-heading-title{padding:0;margin:0;line-height:1}.elementor-widget-heading .elementor-heading-title[class*=elementor-size-]>a{color:inherit;font-size:inherit;line-height:inherit}.elementor-widget-heading .elementor-heading-title.elementor-size-small{font-size:15px}.elementor-widget-heading .elementor-heading-title.elementor-size-medium{font-size:19px}.elementor-widget-heading .elementor-heading-title.elementor-size-large{font-size:29px}.elementor-widget-heading .elementor-heading-title.elementor-size-xl{font-size:39px}.elementor-widget-heading .elementor-heading-title.elementor-size-xxl{font-size:59px}</style><h1 class="elementor-heading-title elementor-size-default">Arceus X v2.1.4- No.1 Android Roblox Exploit</h1>		</div>
+				</div>
+				<div class="elementor-element elementor-element-099807c elementor-widget elementor-widget-text-editor" data-id="099807c" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.6.5 - 27-04-2022 */
+.elementor-widget-text-editor.elementor-drop-cap-view-stacked .elementor-drop-cap{background-color:#818a91;color:#fff}.elementor-widget-text-editor.elementor-drop-cap-view-framed .elementor-drop-cap{color:#818a91;border:3px solid;background-color:transparent}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap{margin-top:8px}.elementor-widget-text-editor:not(.elementor-drop-cap-view-default) .elementor-drop-cap-letter{width:1em;height:1em}.elementor-widget-text-editor .elementor-drop-cap{float:left;text-align:center;line-height:1;font-size:50px}.elementor-widget-text-editor .elementor-drop-cap-letter{display:inline-block}</style>				<p style="text-align: center;"><img class="alignleft wp-image-389 size-thumbnail" src="https://arceusx.b-cdn.net/wp-content/uploads/2022/01/ArceusX_logo-150x150.png" alt="" width="150" height="150" srcset="https://arceusx.b-cdn.net/wp-content/uploads/2022/01/ArceusX_logo-150x150.png 150w, https://arceusx.b-cdn.net/wp-content/uploads/2022/01/ArceusX_logo-300x300.png 300w, https://arceusx.b-cdn.net/wp-content/uploads/2022/01/ArceusX_logo.png 334w" sizes="(max-width: 150px) 100vw, 150px" /></p>
+<p class="GlobalComponents__SectionText-sc-6qzy6y-2 gPILqT" style="text-align: left;">Arceus X is a first Android Roblox Mod Menu/Exploit to improve the gameplay.</p>
+<p>Arceus X APK allows you to exploit your favorite game giving you the most advance features missing in the official game.</p>
+<p style="text-align: center;"><div id="ad-header">
+
+</div></p>
+<p>Arceus X v2 has been released with many advanced features. The latest version of Arceus X will execute many PC scripts, which isn&#8217;t supported in the current version.</p>
+<p>We are also going to release a Windows app of Arceus X soon and it will be a complete package for both PC users and Mobile users <br />
+<p/>
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5100969805256277"
+     crossorigin="anonymous"></script>
+
+
+
+<p style="text-align:center;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 24px;
+color: blue;
+">How To Download <p/> 
+
+
+<p style="text-align:center;
+font-size: 32px;
+  font-weight: 700;
+  color: blue;
+">
+1- Press Download  <br />
+2- To Unlock Download , Choose 1 Offer And Complete it<br />
+( Don't Worry It's Very easy 2-3 Mins )<br />
+3- You Will Redirect To Mediafire And Start Download</p><br />						</div>
+<div class="elementor-element elementor-element-4be256d elementor-button-info elementor-align-center elementor-widget elementor-widget-button" data-id="4be256d" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+                        <a onclick="CPABuildLock()">
+<button style="  background: #eb9d0e;
+  border-radius: 999px;
+  box-shadow: #eb9d0e 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;">
+Download 2.1.4</button></a>
+
+<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><p><span><span style="color: #ffffff;">Join Us on Instagram for Latest news and discussion regarding Arceus X</span> -&nbsp;</span><span style="color: #ff6600;"><strong><a href="https://www.instagram.com/arceusx.co/" style="color: #ff6600;">Join Now</a></strong></span></p></p>		</div>
+			
+
+		</div>
+				</div>
+				</div>	
+</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-a1ec19d elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="a1ec19d" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-709c6ba" data-id="709c6ba" data-element_type="column">
+			<div class="elementor-widget-wrap">
+									</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-1a0a76 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="1a0a76" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+							<div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-221e9d6c" data-id="221e9d6c" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-3cca971f elementor-widget elementor-widget-heading" data-id="3cca971f" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h6 class="elementor-heading-title elementor-size-default">What is Arceus X? - An Introduction
+</h6>		</div>
+				</div>
+				<div class="elementor-element elementor-element-38e2ca9 elementor-widget elementor-widget-text-editor" data-id="38e2ca9" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p>Arceus X is a first and one of the most widely used Roblox Mod Menu/exploit specially developed for Android. It allows you to use features such as Android LuaU Execution, Infinite Jump, Super Speed, Btools, Script Hub, More!.</p><p>Arceus X APK is developed using Node.js, C++, JAVA. It&#8217;s an Android application that has floating Menu to execute scripts while you are in the game.</p><p style="text-align: center;"><strong>&#8212;Arceusx.co TEAM&#8212;</strong></p>						</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-top-column elementor-element elementor-element-2de9efbd" data-id="2de9efbd" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-246df06f elementor-widget elementor-widget-image" data-id="246df06f" data-element_type="widget" data-widget_type="image.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.6.5 - 27-04-2022 */
+.elementor-widget-image{text-align:center}.elementor-widget-image a{display:inline-block}.elementor-widget-image a img[src$=".svg"]{width:48px}.elementor-widget-image img{vertical-align:middle;display:inline-block}</style>												<img width="818" height="600" src="https://i.im.ge/2022/07/28/F96UPG.jpg" title="arceusx_banner" alt="arceusx_banner" />															</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-ec9937a elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="ec9937a" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+							<div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-35c02e22" data-id="35c02e22" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-2569b8eb elementor-widget elementor-widget-heading" data-id="2569b8eb" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">How to use Arceus X?</h2>		</div>
+				</div>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-7ec23cfa elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7ec23cfa" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-3e90e602" data-id="3e90e602" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-6f9be49 elementor-widget elementor-widget-heading" data-id="6f9be49" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-heading-title elementor-size-default">01</div>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-591fd48c" data-id="591fd48c" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1bd90de elementor-widget elementor-widget-heading" data-id="1bd90de" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h6 class="elementor-heading-title elementor-size-default">First of all download the Arceus X APK from the download button given below</h6>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-4553372b elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="4553372b" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-75810a7a" data-id="75810a7a" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-7cdc9b19 elementor-widget elementor-widget-heading" data-id="7cdc9b19" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-heading-title elementor-size-default">02</div>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-58f3ba23" data-id="58f3ba23" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-5db7f8a2 elementor-widget elementor-widget-heading" data-id="5db7f8a2" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h6 class="elementor-heading-title elementor-size-default">Open the App and click on "Get Key" to start the verification process</h6>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-34fc0a12 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="34fc0a12" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-7c721cc2" data-id="7c721cc2" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-2f65d99e elementor-widget elementor-widget-heading" data-id="2f65d99e" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-heading-title elementor-size-default">03</div>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-414ba58a" data-id="414ba58a" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-41661646 elementor-widget elementor-widget-heading" data-id="41661646" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h6 class="elementor-heading-title elementor-size-default">Complete the three steps verification </h6>		</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-inner-section elementor-element elementor-element-6e353660 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="6e353660" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-54baec1a" data-id="54baec1a" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-615183cd elementor-widget elementor-widget-heading" data-id="615183cd" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<div class="elementor-heading-title elementor-size-default">04</div>		</div>
+				</div>
+					</div>
+		</div>
+				<div class="elementor-column elementor-col-50 elementor-inner-column elementor-element elementor-element-57fde128" data-id="57fde128" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-3cfbb59d elementor-widget elementor-widget-heading" data-id="3cfbb59d" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h6 class="elementor-heading-title elementor-size-default">Once the verification is complete, open the app again and start exploiting Roblox in Android</h6>		</div>
+
+
+				</div>
+					</div>
+		</div>
+							</div>
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5100969805256277"
+     crossorigin="anonymous"></script>
+
+
+
+
+		</section>
+				<div class="elementor-element elementor-element-31aba4f elementor-widget elementor-widget-text-editor" data-id="31aba4f" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+													</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-7a037009 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="7a037009" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+							<div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-5dfdb520" data-id="5dfdb520" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<section class="elementor-section elementor-inner-section elementor-element elementor-element-4dfbfa9c elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="4dfbfa9c" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-inner-column elementor-element elementor-element-2e1c98ce" data-id="2e1c98ce" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-487a9bbe elementor-widget elementor-widget-heading" data-id="487a9bbe" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+			<h2 class="elementor-heading-title elementor-size-default">Frequently asked questions
+</h2>		</div>
+				</div>
+				<div class="elementor-element elementor-element-73b65c1 elementor-widget elementor-widget-text-editor" data-id="73b65c1" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<p style="text-align: center;"><div id="ad-header">
+<center>
+</div></p><div class="col-12 col-lg-6"><ul class="list mbr-fonts-style display-7"><li><strong>Is Arceus X 100% Safe?</strong><br />Arceus X is 100% safe from ArceusX.co Team as long as you don&#8217;t download from shady sites.</li><li><strong>When will Arceus X get the update?</strong><br />Arceus X gets the update regularly. The developers worked hard to get fix the issues</li></ul></div><div class="col-12 col-lg-6"><ul class="list mbr-fonts-style display-7"><li><strong>Arceus X is crashing?</strong><br />Sometimes it may happen, please close the Roblox app and start again</li><li><strong>How to download Arceus X APK?<br /></strong>The download link is given below, you can download the APK file without having to go to linkvertise, but you will have to complete the linkvertise process for the Key verification.</li></ul></div>						</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-59956710 elementor-section-content-middle elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="59956710" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+							<div class="elementor-background-overlay"></div>
+							<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-190febc1" data-id="190febc1" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-2955cb1 elementor-widget elementor-widget-text-editor" data-id="2955cb1" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<h2 style="text-align: center;"><span style="color: #ffffff;"><strong>Download Arceus X</strong></span></h2><p style="text-align: center;"><div id="ad-header">
+
+
+
+<!-- Square Ad -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5100969805256277"
+     crossorigin="anonymous"></script><center>
+</div></p>						</div>
+				</div>
+				<div class="elementor-element elementor-element-4be256d elementor-button-info elementor-align-center elementor-widget elementor-widget-button" data-id="4be256d" data-element_type="widget" data-widget_type="button.default">
+				<div class="elementor-widget-container">
+					<div class="elementor-button-wrapper">
+                        <a onclick="CPABuildLock()">
+<button style="  background: #eb9d0e;
+  border-radius: 999px;
+  box-shadow: #eb9d0e 0 10px 20px -10px;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 24px;
+  opacity: 1;
+  outline: 0 solid transparent;
+  padding: 8px 18px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: fit-content;
+  word-break: break-word;
+  border: 0;">
+Download 2.1.4</button></a>
+
+<div class="elementor-widget-container">
+			<p class="elementor-heading-title elementor-size-default"><p><span><span style="color: #ffffff;">Join Us on Instagram for Latest news and discussion regarding Arceus X</span> -&nbsp;</span><span style="color: #ff6600;"><strong><a href="https://www.instagram.com/arceusx.co/" style="color: #ff6600;">Join Now</a></strong></span></p></p>		</div>
+			
+		</div>
+				</div>
+				</div>
+				<div class="elementor-element elementor-element-3e2582a elementor-widget elementor-widget-heading" data-id="3e2582a" data-element_type="widget" data-widget_type="heading.default">
+				<div class="elementor-widget-container">
+</div>
+					</div>
+		</div>
+							</div>
+		</section>
+				<section class="elementor-section elementor-top-section elementor-element elementor-element-91cf73b elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="91cf73b" data-element_type="section">
+						<div class="elementor-container elementor-column-gap-default">
+					<div class="elementor-column elementor-col-100 elementor-top-column elementor-element elementor-element-bc87297" data-id="bc87297" data-element_type="column">
+			<div class="elementor-widget-wrap elementor-element-populated">
+								<div class="elementor-element elementor-element-1feb424 elementor-widget elementor-widget-text-editor" data-id="1feb424" data-element_type="widget" data-widget_type="text-editor.default">
+				<div class="elementor-widget-container">
+							<h2>Arceus X Overview</h2>
+<hr>
+<p>Since there are numerous Roblox players decided to cheat the game, Arceus X born&nbsp; with the intention of&nbsp; making the gameplay fun and exciting. A team of passionate programmers decided to develop an app that can run and execute scripts in the mobile devices, specially for Android devices.&nbsp;</p>
+<p>There are 100s of Roblox executors available for Windows that are free and as well as paid, but there was a major need of Android Roblox executor at that time. And therefore, Arceus X was born. It has all the features which a windows executor can provides.</p>
+<h2 style="outline: none; margin-top: 0px; margin-bottom: 17px; font-size: 22px; font-weight: var(--pchead-wei); font-family: var(--pchead-font); color: #313131; line-height: 1.3em; text-align: center;"><strong>How to Download Arceus X</strong></h2>
+<p>Despite Arceus X is free but you need to follow messy procedures to get the Arceus X APK file such as completing one offer . However, we have decided to provide the APK file without any linkvertise on our site. Just click on the download button provided above and the downlaoding will start automatically without the need of completing any linkvertise ad.&nbsp;</p>
+<p>But there&#8217;s still a messy procedure that you need to complete, which is Arceus X key and we can&#8217;t do anything about that. Just complete the verification process and you are good to go.</p>
+						</div>
+				</div>
+				<div class="elementor-element elementor-element-99bf939 elementor-widget elementor-widget-spacer" data-id="99bf939" data-element_type="widget" data-widget_type="spacer.default">
+				<div class="elementor-widget-container">
+			<style>/*! elementor - v3.6.5 - 27-04-2022 */
+.e-container.e-container--row .elementor-spacer-inner{width:var(--spacer-size)}.e-container.e-container--column .elementor-spacer-inner,.elementor-column .elementor-spacer-inner{height:var(--spacer-size)}</style>		<div class="elementor-spacer">
+			<div class="elementor-spacer-inner"></div>
+		</div>
+				</div>
+				</div>
+					</div>
+		</div>
+							</div>
+		</section>
+							</div>
+		</div><!-- .entry-content -->
+	</div>
+</article><!-- #post-180 -->
+
+			</div>
+					</main><!-- #main -->
+			</div>
+</div><!-- #primary -->
+	</div><!-- #inner-wrap -->
+	<footer id="colophon" class="site-footer" role="contentinfo">
+	<div class="site-footer-wrap">
+		<div class="site-bottom-footer-wrap site-footer-row-container site-footer-focus-item site-footer-row-layout-standard site-footer-row-tablet-layout-default site-footer-row-mobile-layout-default" data-section="kadence_customizer_footer_bottom">
+	<div class="site-footer-row-container-inner">
+				<div class="site-container">
+			<div class="site-bottom-footer-inner-wrap site-footer-row site-footer-row-columns-1 site-footer-row-column-layout-row site-footer-row-tablet-column-layout-default site-footer-row-mobile-column-layout-row ft-ro-dir-row ft-ro-collapse-normal ft-ro-t-dir-default ft-ro-m-dir-default ft-ro-lstyle-plain">
+									<div class="site-footer-bottom-section-1 site-footer-section footer-section-inner-items-1">
+						
+<div class="footer-widget-area site-info site-footer-focus-item content-align-default content-tablet-align-default content-mobile-align-default content-valign-default content-tablet-valign-default content-mobile-valign-default" data-section="kadence_customizer_footer_html">
+	<div class="footer-widget-area-inner site-info-inner">
+		<div class="footer-html inner-link-style-normal"><div class="footer-html-inner"><p>&copy; 2022 Arceus X</p>
+</div></div>	</div>
+</div><!-- .site-info -->
+					</div>
+								</div>
+		</div>
+	</div>
+</div>
+	</div>
+</footer><!-- #colophon -->
+
+</div><!-- #wrapper -->
+
+	<div id="mobile-drawer" class="popup-drawer popup-drawer-layout-sidepanel popup-drawer-animation-fade popup-drawer-side-right" data-drawer-target-string="#mobile-drawer"
+			>
+		<div class="drawer-overlay" data-drawer-target-string="#mobile-drawer"></div>
+		<div class="drawer-inner">
+						<div class="drawer-header">
+				<button class="menu-toggle-close drawer-toggle" aria-label="Close menu"  data-toggle-target="#mobile-drawer" data-toggle-body-class="showing-popup-drawer-from-right" aria-expanded="false" data-set-focus=".menu-toggle-open"
+							>
+					<span class="toggle-close-bar"></span>
+					<span class="toggle-close-bar"></span>
+				</button>
+			</div>
+			<div class="drawer-content mobile-drawer-content content-align-left content-valign-top">
+								<div class="site-header-item site-header-focus-item site-header-item-mobile-navigation mobile-navigation-layout-stretch-false" data-section="kadence_customizer_mobile_navigation">
+		<nav id="mobile-site-navigation" class="mobile-navigation drawer-navigation drawer-navigation-parent-toggle-false" role="navigation" aria-label="Primary Mobile Navigation">
+				<div class="mobile-menu-container drawer-menu-container">
+			<ul id="mobile-menu" class="menu has-collapse-sub-nav"><li class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-302"><a href="https://arceusx.co/" aria-current="page">Home</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-597"><a href="https://arceusx.co/category/script/">Script</a></li>
+<li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-321"><a href="https://arceusx.co/forum/">Forum</a></li>
+<li class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-443"><a href="https://arceusx.co/category/blog/">Blog</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-300"><a href="https://arceusx.co/privacy-policy/">Privacy Policy</a></li>
+<li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-301"><a href="https://arceusx.co/disclaimer/">Disclaimer</a></li>
+</ul>		</div>
+	</nav><!-- #site-navigation -->
+	</div><!-- data-section="mobile_navigation" -->
+							</div>
+		</div>
+	</div>
+	<script id='copy-the-code-js-extra'>
+var copyTheCode = {"copy_content_as":"","previewMarkup":"<h2>Hello World<\/h2>","buttonMarkup":"<button class=\"copy-the-code-button\" title=\"\"><\/button>","buttonSvg":"<svg viewBox=\"-21 0 512 512\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><path d=\"m186.667969 416c-49.984375 0-90.667969-40.683594-90.667969-90.667969v-218.664062h-37.332031c-32.363281 0-58.667969 26.300781-58.667969 58.664062v288c0 32.363281 26.304688 58.667969 58.667969 58.667969h266.664062c32.363281 0 58.667969-26.304688 58.667969-58.667969v-37.332031zm0 0\"><\/path><path d=\"m469.332031 58.667969c0-32.40625-26.261719-58.667969-58.664062-58.667969h-224c-32.40625 0-58.667969 26.261719-58.667969 58.667969v266.664062c0 32.40625 26.261719 58.667969 58.667969 58.667969h224c32.402343 0 58.664062-26.261719 58.664062-58.667969zm0 0\"><\/path><\/svg>","selectors":[{"selector":"pre","style":"button","button_text":"Copy","button_title":"Copy to Clipboard","button_copy_text":"Copied!","button_position":"inside"}],"selector":"pre","settings":{"selector":"pre","button-text":"Copy","button-title":"Copy to Clipboard","button-copy-text":"Copied!","button-position":"inside"},"string":{"title":"Copy to Clipboard","copy":"Copy","copied":"Copied!"},"image-url":"https:\/\/arceusx.co\/wp-content\/plugins\/copy-the-code\/\/assets\/images\/copy-1.svg"};
+</script>
+<script data-minify="1" src='https://arceusx.b-cdn.net/wp-content/cache/min/1/wp-content/plugins/copy-the-code/assets/js/copy-the-code.js?ver=1654453187' id='copy-the-code-js' defer></script>
+<script id='rocket-browser-checker-js-after'>
+"use strict";var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||!1,descriptor.configurable=!0,"value"in descriptor&&(descriptor.writable=!0),Object.defineProperty(target,descriptor.key,descriptor)}}return function(Constructor,protoProps,staticProps){return protoProps&&defineProperties(Constructor.prototype,protoProps),staticProps&&defineProperties(Constructor,staticProps),Constructor}}();function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor))throw new TypeError("Cannot call a class as a function")}var RocketBrowserCompatibilityChecker=function(){function RocketBrowserCompatibilityChecker(options){_classCallCheck(this,RocketBrowserCompatibilityChecker),this.passiveSupported=!1,this._checkPassiveOption(this),this.options=!!this.passiveSupported&&options}return _createClass(RocketBrowserCompatibilityChecker,[{key:"_checkPassiveOption",value:function(self){try{var options={get passive(){return!(self.passiveSupported=!0)}};window.addEventListener("test",null,options),window.removeEventListener("test",null,options)}catch(err){self.passiveSupported=!1}}},{key:"initRequestIdleCallback",value:function(){!1 in window&&(window.requestIdleCallback=function(cb){var start=Date.now();return setTimeout(function(){cb({didTimeout:!1,timeRemaining:function(){return Math.max(0,50-(Date.now()-start))}})},1)}),!1 in window&&(window.cancelIdleCallback=function(id){return clearTimeout(id)})}},{key:"isDataSaverModeOn",value:function(){return"connection"in navigator&&!0===navigator.connection.saveData}},{key:"supportsLinkPrefetch",value:function(){var elem=document.createElement("link");return elem.relList&&elem.relList.supports&&elem.relList.supports("prefetch")&&window.IntersectionObserver&&"isIntersecting"in IntersectionObserverEntry.prototype}},{key:"isSlowConnection",value:function(){return"connection"in navigator&&"effectiveType"in navigator.connection&&("2g"===navigator.connection.effectiveType||"slow-2g"===navigator.connection.effectiveType)}}]),RocketBrowserCompatibilityChecker}();
+</script>
+<script id='rocket-preload-links-js-extra'>
+var RocketPreloadLinksConfig = {"excludeUris":"\/(.+\/)?feed\/?.+\/?|\/(?:.+\/)?embed\/|\/(index\\.php\/)?wp\\-json(\/.*|$)|\/wp-admin\/|\/logout\/|\/wp-login.php","usesTrailingSlash":"1","imageExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif","fileExt":"jpg|jpeg|gif|png|tiff|bmp|webp|avif|php|pdf|html|htm","siteUrl":"https:\/\/arceusx.co","onHoverDelay":"100","rateThrottle":"3"};
+</script>
+<script id='rocket-preload-links-js-after'>
+(function() {
+"use strict";var r="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e=function(){function i(e,t){for(var n=0;n<t.length;n++){var i=t[n];i.enumerable=i.enumerable||!1,i.configurable=!0,"value"in i&&(i.writable=!0),Object.defineProperty(e,i.key,i)}}return function(e,t,n){return t&&i(e.prototype,t),n&&i(e,n),e}}();function i(e,t){if(!(e instanceof t))throw new TypeError("Cannot call a class as a function")}var t=function(){function n(e,t){i(this,n),this.browser=e,this.config=t,this.options=this.browser.options,this.prefetched=new Set,this.eventTime=null,this.threshold=1111,this.numOnHover=0}return e(n,[{key:"init",value:function(){!this.browser.supportsLinkPrefetch()||this.browser.isDataSaverModeOn()||this.browser.isSlowConnection()||(this.regex={excludeUris:RegExp(this.config.excludeUris,"i"),images:RegExp(".("+this.config.imageExt+")$","i"),fileExt:RegExp(".("+this.config.fileExt+")$","i")},this._initListeners(this))}},{key:"_initListeners",value:function(e){-1<this.config.onHoverDelay&&document.addEventListener("mouseover",e.listener.bind(e),e.listenerOptions),document.addEventListener("mousedown",e.listener.bind(e),e.listenerOptions),document.addEventListener("touchstart",e.listener.bind(e),e.listenerOptions)}},{key:"listener",value:function(e){var t=e.target.closest("a"),n=this._prepareUrl(t);if(null!==n)switch(e.type){case"mousedown":case"touchstart":this._addPrefetchLink(n);break;case"mouseover":this._earlyPrefetch(t,n,"mouseout")}}},{key:"_earlyPrefetch",value:function(t,e,n){var i=this,r=setTimeout(function(){if(r=null,0===i.numOnHover)setTimeout(function(){return i.numOnHover=0},1e3);else if(i.numOnHover>i.config.rateThrottle)return;i.numOnHover++,i._addPrefetchLink(e)},this.config.onHoverDelay);t.addEventListener(n,function e(){t.removeEventListener(n,e,{passive:!0}),null!==r&&(clearTimeout(r),r=null)},{passive:!0})}},{key:"_addPrefetchLink",value:function(i){return this.prefetched.add(i.href),new Promise(function(e,t){var n=document.createElement("link");n.rel="prefetch",n.href=i.href,n.onload=e,n.onerror=t,document.head.appendChild(n)}).catch(function(){})}},{key:"_prepareUrl",value:function(e){if(null===e||"object"!==(void 0===e?"undefined":r(e))||!1 in e||-1===["http:","https:"].indexOf(e.protocol))return null;var t=e.href.substring(0,this.config.siteUrl.length),n=this._getPathname(e.href,t),i={original:e.href,protocol:e.protocol,origin:t,pathname:n,href:t+n};return this._isLinkOk(i)?i:null}},{key:"_getPathname",value:function(e,t){var n=t?e.substring(this.config.siteUrl.length):e;return n.startsWith("/")||(n="/"+n),this._shouldAddTrailingSlash(n)?n+"/":n}},{key:"_shouldAddTrailingSlash",value:function(e){return this.config.usesTrailingSlash&&!e.endsWith("/")&&!this.regex.fileExt.test(e)}},{key:"_isLinkOk",value:function(e){return null!==e&&"object"===(void 0===e?"undefined":r(e))&&(!this.prefetched.has(e.href)&&e.origin===this.config.siteUrl&&-1===e.href.indexOf("?")&&-1===e.href.indexOf("#")&&!this.regex.excludeUris.test(e.href)&&!this.regex.images.test(e.href))}}],[{key:"run",value:function(){"undefined"!=typeof RocketPreloadLinksConfig&&new n(new RocketBrowserCompatibilityChecker({capture:!0,passive:!0}),RocketPreloadLinksConfig).init()}}]),n}();t.run();
+}());
+</script>
+<script id='kadence-navigation-js-extra'>
+var kadenceConfig = {"screenReader":{"expand":"Expand child menu","collapse":"Collapse child menu"},"breakPoints":{"desktop":"1024","tablet":768},"scrollOffset":"0"};
+</script>
+<script src='https://arceusx.b-cdn.net/wp-content/themes/kadence/assets/js/navigation.min.js?ver=1.1.18' id='kadence-navigation-js' async></script>
+<script src='https://arceusx.b-cdn.net/wp-content/plugins/elementor/assets/js/webpack.runtime.min.js?ver=3.6.5' id='elementor-webpack-runtime-js' defer></script>
+<script src='https://arceusx.b-cdn.net/wp-content/plugins/elementor/assets/js/frontend-modules.min.js?ver=3.6.5' id='elementor-frontend-modules-js' defer></script>
+<script src='https://arceusx.b-cdn.net/wp-content/plugins/elementor/assets/lib/waypoints/waypoints.min.js?ver=4.0.2' id='elementor-waypoints-js' defer></script>
+<script src='https://arceusx.b-cdn.net/wp-includes/js/jquery/ui/core.min.js?ver=1.13.1' id='jquery-ui-core-js' defer></script>
+<script id='elementor-frontend-js-before'>
+var elementorFrontendConfig = {"environmentMode":{"edit":false,"wpPreview":false,"isScriptDebug":false},"i18n":{"shareOnFacebook":"Share on Facebook","shareOnTwitter":"Share on Twitter","pinIt":"Pin it","download":"Download","downloadImage":"Download image","fullscreen":"Fullscreen","zoom":"Zoom","share":"Share","playVideo":"Play Video","previous":"Previous","next":"Next","close":"Close"},"is_rtl":false,"breakpoints":{"xs":0,"sm":480,"md":768,"lg":1025,"xl":1440,"xxl":1600},"responsive":{"breakpoints":{"mobile":{"label":"Mobile","value":767,"default_value":767,"direction":"max","is_enabled":true},"mobile_extra":{"label":"Mobile Extra","value":880,"default_value":880,"direction":"max","is_enabled":false},"tablet":{"label":"Tablet","value":1024,"default_value":1024,"direction":"max","is_enabled":true},"tablet_extra":{"label":"Tablet Extra","value":1200,"default_value":1200,"direction":"max","is_enabled":false},"laptop":{"label":"Laptop","value":1366,"default_value":1366,"direction":"max","is_enabled":false},"widescreen":{"label":"Widescreen","value":2400,"default_value":2400,"direction":"min","is_enabled":false}}},"version":"3.6.5","is_static":false,"experimentalFeatures":{"e_dom_optimization":true,"e_optimized_assets_loading":true,"e_optimized_css_loading":true,"a11y_improvements":true,"e_import_export":true,"additional_custom_breakpoints":true,"e_hidden_wordpress_widgets":true,"landing-pages":true,"elements-color-picker":true,"favorite-widgets":true,"admin-top-bar":true},"urls":{"assets":"https:\/\/arceusx.co\/wp-content\/plugins\/elementor\/assets\/"},"settings":{"page":[],"editorPreferences":[]},"kit":{"active_breakpoints":["viewport_mobile","viewport_tablet"],"global_image_lightbox":"yes","lightbox_enable_counter":"yes","lightbox_enable_fullscreen":"yes","lightbox_enable_zoom":"yes","lightbox_enable_share":"yes","lightbox_title_src":"title","lightbox_description_src":"description"},"post":{"id":180,"title":"Arceus%20X%20v2.1.4%20-%20Download%20%231%20Roblox%20Mod%20Menu%20APK","excerpt":"","featuredImage":false}};
+</script>
+<script src='https://arceusx.b-cdn.net/wp-content/plugins/elementor/assets/js/frontend.min.js?ver=3.6.5' id='elementor-frontend-js' defer></script>
+<script>class RocketElementorAnimation{constructor(){this.deviceMode=document.createElement("span"),this.deviceMode.id="elementor-device-mode",this.deviceMode.setAttribute("class","elementor-screen-only"),document.body.appendChild(this.deviceMode)}_detectAnimations(){let t=getComputedStyle(this.deviceMode,":after").content.replace(/"/g,"");this.animationSettingKeys=this._listAnimationSettingsKeys(t),document.querySelectorAll(".elementor-invisible[data-settings]").forEach(t=>{const e=t.getBoundingClientRect();if(e.bottom>=0&&e.top<=window.innerHeight)try{this._animateElement(t)}catch(t){}})}_animateElement(t){const e=JSON.parse(t.dataset.settings),i=e._animation_delay||e.animation_delay||0,n=e[this.animationSettingKeys.find(t=>e[t])];if("none"===n)return void t.classList.remove("elementor-invisible");t.classList.remove(n),this.currentAnimation&&t.classList.remove(this.currentAnimation),this.currentAnimation=n;let s=setTimeout(()=>{t.classList.remove("elementor-invisible"),t.classList.add("animated",n),this._removeAnimationSettings(t,e)},i);window.addEventListener("rocket-startLoading",function(){clearTimeout(s)})}_listAnimationSettingsKeys(t="mobile"){const e=[""];switch(t){case"mobile":e.unshift("_mobile");case"tablet":e.unshift("_tablet");case"desktop":e.unshift("_desktop")}const i=[];return["animation","_animation"].forEach(t=>{e.forEach(e=>{i.push(t+e)})}),i}_removeAnimationSettings(t,e){this._listAnimationSettingsKeys().forEach(t=>delete e[t]),t.dataset.settings=JSON.stringify(e)}static run(){const t=new RocketElementorAnimation;requestAnimationFrame(t._detectAnimations.bind(t))}}document.addEventListener("DOMContentLoaded",RocketElementorAnimation.run);</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1656881636 -->
